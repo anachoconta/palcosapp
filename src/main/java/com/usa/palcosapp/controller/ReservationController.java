@@ -1,6 +1,5 @@
 package com.usa.palcosapp.controller;
 
-import com.usa.palcosapp.model.Category;
 import com.usa.palcosapp.model.Reservation;
 import com.usa.palcosapp.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/message")
+@RequestMapping("/api/Message")
 @CrossOrigin(origins = "*",methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.POST})
 public class MessageController {
     @Autowired

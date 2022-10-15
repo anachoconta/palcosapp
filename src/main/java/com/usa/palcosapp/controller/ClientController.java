@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Client")
-@CrossOrigin(origins = "*",methods = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ClientController {
     @Autowired
     private ClientService clientService;
@@ -20,7 +20,6 @@ public class ClientController {
     public List<Client> getAll(){
         return clientService.getAll();
     }
-
     @GetMapping("/{idClient}")
     public Optional<Client> getById(@PathVariable("idClient")Integer id){
         return clientService.getById(id);
