@@ -13,11 +13,11 @@ public class CategoryRepository {
     @Autowired
     private CategoryCrudRepository categoryCrudRepository;
 
-    public List<Category>getAll(){
+    public List <Category>getAll(){
         return (List<Category>) categoryCrudRepository.findAll();
     }
 
-    public Optional<Category>getById(Integer id){
+    public Optional<Category> getById(Integer id){
         return categoryCrudRepository.findById(id);
     }
 
