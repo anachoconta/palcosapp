@@ -23,16 +23,15 @@ public class Box {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name="idCategory")
+    @JoinColumn(name = "idCategory")
     @JsonIgnoreProperties("boxes")
     private Category category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "box")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "box")
     @JsonIgnoreProperties({"box", "client"})
     private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "box")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "box")
     @JsonIgnoreProperties({"box", "client"})
     private List<Reservation> reservations;
-
 }

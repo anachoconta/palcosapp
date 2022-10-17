@@ -13,7 +13,7 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Category> getAll() {
+    public List<Category> getAll(){
         return categoryRepository.getAll();
     }
 
@@ -21,42 +21,42 @@ public class CategoryService {
         return categoryRepository.getById(id);
     }
 
-    public Category save(Category category){
-        if (category.getId()!=null){
+    public Category save (Category category){
+        if(category.getId()==null){
             return categoryRepository.save(category);
-        }else {
-            Optional<Category>optional=categoryRepository.getById(category.getId());
-            if (optional.isEmpty()){
+        }else{
+            Optional<Category> optional=categoryRepository.getById(category.getId());
+            if(optional.isEmpty()){
                 return categoryRepository.save(category);
-            }else {
+            }else{
                 return category;
             }
         }
     }
-    public Category update(Category category){
-        if (category.getId()!=null){
-            Optional<Category> optional=categoryRepository.getById(category.getId());
-            if (!optional.isEmpty()){
-               if (category.getDescription()!=null){
+    public Category update (Category category){
+        if(category.getId()!=null){
+            Optional<Category> optional=categoryRepository.getById((category.getId()));
+            if(!optional.isEmpty()){
+                if(category.getName()!=null){
+                    optional.get().setName((category.getName()));
+                }
+                if(category.getDescription()!=null){
                     optional.get().setDescription(category.getDescription());
                 }
-                if (category.getName()!=null) {
-                    optional.get().setName(category.getName());
-                }
-                categoryRepository.save(category);
+                categoryRepository.save(optional.get()) ;
                 return optional.get();
-            }else {
+            }else{
                 return category;
             }
-        }else {
-                return category;
-            }
+        }else{
+            return category;
         }
-       public boolean delete(Integer id){
-            Boolean aBoolean=getById(id).map(category -> {
-                categoryRepository.delete(category);
-                return true;
-            }).orElse(false);
-            return aBoolean;
-        }
+    }
+    public boolean delete (Integer id){
+        Boolean aBoolean=getById(id).map(category -> {
+            categoryRepository.delete(category);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }

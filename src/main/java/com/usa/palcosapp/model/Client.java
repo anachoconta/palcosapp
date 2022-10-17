@@ -22,11 +22,11 @@ public class Client {
     private String name;
     private Integer age;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Message>messages;
+    private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
     @JsonIgnoreProperties("client")
-    private List<Reservation>reservations;
+    private List<Reservation> reservations;
 }

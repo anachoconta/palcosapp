@@ -11,7 +11,6 @@ import java.util.Optional;
 @Service
 public class MessageService {
     @Autowired
-
     private MessageRepository messageRepository;
 
     public List<Message> getAll(){
@@ -22,41 +21,38 @@ public class MessageService {
         return messageRepository.getById(id);
     }
 
-    public Message save(Message message){
+    public Message save (Message message){
         if (message.getIdMessage()==null){
             return messageRepository.save(message);
-        }else {
+        }else{
             Optional<Message> optional=messageRepository.getById(message.getIdMessage());
             if(optional.isEmpty()){
                 return messageRepository.save(message);
-            }else {
+            }else{
                 return message;
             }
         }
     }
-
-    public Message update(Message message){
-        if(message.getIdMessage()!=null){
-            Optional<Message> optional=messageRepository.getById(message.getIdMessage());
-            if (!optional.isEmpty()){
-                if (message.getMessageText()!=null){
+    public Message update (Message message) {
+        if (message.getIdMessage() != null) {
+            Optional<Message> optional = messageRepository.getById(message.getIdMessage());
+            if (!optional.isEmpty()) {
+                if (message.getMessageText() != null) {
                     optional.get().setMessageText(message.getMessageText());
                     optional.get().setClient(message.getClient());
                     optional.get().setBox(message.getBox());
                 }
-                if (message.getMessageText()!=null){
-                    optional.get().setMessageText(message.getMessageText());
-                }
                 messageRepository.save(optional.get());
                 return optional.get();
-            }else {
+            } else {
                 return message;
             }
-        }else {
+        } else {
             return message;
         }
+
     }
-    public boolean delete(Integer id){
+    public boolean delete (Integer id){
         Boolean aBoolean=getById(id).map(message -> {
             messageRepository.delete(message);
             return true;

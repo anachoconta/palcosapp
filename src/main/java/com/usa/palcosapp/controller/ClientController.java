@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Client")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+@CrossOrigin(origins = "*",methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class ClientController {
     @Autowired
     private ClientService clientService;
@@ -24,22 +24,19 @@ public class ClientController {
     public Optional<Client> getById(@PathVariable("idClient")Integer id){
         return clientService.getById(id);
     }
-
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Client save(@RequestBody Client client){
-        return clientService.save(client);
+        return  clientService.save(client);
     }
-
-    @PutMapping ("/update")
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Client update (@RequestBody Client client){
         return clientService.update(client);
     }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete (@PathVariable("id")Integer id){
         return clientService.delete(id);
-  }
+    }
 }

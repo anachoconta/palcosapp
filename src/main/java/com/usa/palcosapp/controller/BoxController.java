@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Box")
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
+@CrossOrigin(origins = "*",methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class BoxController {
     @Autowired
     private BoxService boxService;
@@ -39,5 +39,4 @@ public class BoxController {
     public boolean delete (@PathVariable("id")Integer id){
         return boxService.delete(id);
     }
-
 }
