@@ -1,5 +1,6 @@
 package com.usa.palcosapp.controller;
 
+import com.usa.palcosapp.model.Category;
 import com.usa.palcosapp.model.Client;
 import com.usa.palcosapp.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +40,5 @@ public class ClientController {
     public boolean delete (@PathVariable("id")Integer id){
         return clientService.delete(id);
     }
+
 }
