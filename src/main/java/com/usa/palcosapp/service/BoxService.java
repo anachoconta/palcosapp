@@ -16,46 +16,49 @@ public class BoxService {
     public List<Box> getAll(){
         return boxRepository.getAll();
     }
+
     public Optional<Box> getById(Integer id){
         return boxRepository.getById(id);
     }
-
-    public Box save(Box box) {
-        if (box.getId() == null) {
+    public Box save (Box box){
+        if (box.getId()==null) {
             return boxRepository.save(box);
-        } else {
-            Optional<Box> optional = boxRepository.getById(box.getId());
-            if (optional.isEmpty()) {
+        }else{
+            Optional<Box> optional=boxRepository.getById(box.getId());
+            if (optional.isEmpty()){
                 return boxRepository.save(box);
-            } else {
+            }else{
                 return box;
             }
         }
     }
-    public Box update(Box box){
-            if (box.getId()!=null) {
-                Optional<Box> optional = boxRepository.getById(box.getId());
-                if (!optional.isEmpty()) {
-                    if (box.getName()!=null){
-                        optional.get().setName(box.getName());
-                    }
-                    if (box.getLocation()!=null){
-                        optional.get().setLocation(box.getLocation());
-                    }
-                    if (box.getCapacity()!=null){
-                        optional.get().setCapacity(box.getCapacity());
-                    }
-                    if (box.getDescription()!=null) {
-                        optional.get().setDescription(box.getDescription());
-                    }
-                    boxRepository.save(optional.get());
-                    return optional.get();
-                }else {
-                    return box;
+    public Box update (Box box){
+        if (box.getId()!=null){
+            Optional<Box> optional=boxRepository.getById(box.getId());
+            if(!optional.isEmpty()){
+                if(box.getName()!=null){
+                    optional.get().setName(box.getName());
                 }
-            }else {
+                if(box.getLocation()!=null){
+                    optional.get().setLocation(box.getLocation());
+                }
+                if(box.getCapacity()!=null){
+                    optional.get().setCapacity(box.getCapacity());
+                }
+                if(box.getDescription()!=null){
+                    optional.get().setDescription(box.getDescription());
+                }
+                if(box.getCategory()!=null){
+                    optional.get().setCategory(box.getCategory());
+                }
+                boxRepository.save(optional.get());
+                return optional.get();
+            }else{
                 return box;
             }
+        }else{
+            return box;
+        }
     }
     public boolean delete(Integer id){
         Boolean aBoolean=getById(id).map(box -> {

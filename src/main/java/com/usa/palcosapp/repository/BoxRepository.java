@@ -25,7 +25,7 @@ public class BoxRepository {
         return boxCrudRepository.save(box);
     }
 
-    public void delete(Box box){
+    public void  delete (Box box){
         boxCrudRepository.delete(box);
     }
 }

@@ -22,27 +22,25 @@ public class ReservationService {
     public List<Reservation> getAll(){
         return reservationRepository.getAll();
     }
-
     public Optional<Reservation> getById(Integer id){
         return reservationRepository.getById(id);
     }
-
-    public Reservation save(Reservation reservation){
-        if (reservation.getIdReservation()==null){
+    public Reservation save (Reservation reservation){
+        if(reservation.getIdReservation()==null){
             return reservationRepository.save(reservation);
-        }else {
+        }else{
             Optional<Reservation> optional=reservationRepository.getById(reservation.getIdReservation());
-            if (optional.isEmpty()){
+            if(optional.isEmpty()){
                 return reservationRepository.save(reservation);
-            }else {
+            }else{
                 return reservation;
             }
         }
     }
-    public Reservation update(Reservation reservation){
-        if (reservation.getIdReservation()!=null){
+    public Reservation update (Reservation reservation){
+        if(reservation.getIdReservation()!=null){
             Optional<Reservation> optional=reservationRepository.getById(reservation.getIdReservation());
-            if (!optional.isEmpty()){
+            if(!optional.isEmpty()){
                 if(reservation.getStartDate()!=null){
                     optional.get().setStartDate(reservation.getStartDate());
                 }
@@ -54,14 +52,14 @@ public class ReservationService {
                 }
                 reservationRepository.save(optional.get());
                 return optional.get();
-            }else {
+            }else{
                 return reservation;
             }
-        }else {
+        }else{
             return reservation;
         }
     }
-    public boolean delete(Integer id){
+    public boolean delete (Integer id){
         Boolean aBoolean=getById(id).map(reservation -> {
             reservationRepository.delete(reservation);
             return true;

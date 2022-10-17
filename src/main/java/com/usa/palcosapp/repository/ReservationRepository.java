@@ -33,6 +33,7 @@ public class ReservationRepository {
     public void delete (Reservation reservation){
         reservationCrudRepository.delete(reservation);
     }
+
     public List<Reservation> getReservationByStatus(String status){
         return reservationCrudRepository.findAllByStatus(status);
     }
@@ -46,6 +47,5 @@ public class ReservationRepository {
             res.add(new ClientReport((Long) report.get(i)[1], (Client) report.get(i)[0]));
         }
         return res;
-
     }
 }

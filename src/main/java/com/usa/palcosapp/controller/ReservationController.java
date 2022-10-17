@@ -42,6 +42,7 @@ public class ReservationController {
     public boolean delete (@PathVariable("id")Integer id){
         return reservationService.delete(id);
     }
+
     @GetMapping("/report-status")
     public ReservationReport getReservationStatusReport(){
         return reservationService.getReservationStatusReport();

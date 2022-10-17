@@ -20,7 +20,6 @@ public class BoxController {
     public List<Box> getAll(){
         return boxService.getAll();
     }
-
     @GetMapping("/{idBox}")
     public Optional<Box> getById (@PathVariable("idBox") Integer id){
         return boxService.getById(id);
@@ -30,7 +29,6 @@ public class BoxController {
     public Box save(@RequestBody Box box){
         return boxService.save(box);
     }
-
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Box update (@RequestBody Box box){
@@ -38,7 +36,8 @@ public class BoxController {
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") Integer id){
+    public boolean delete (@PathVariable("id")Integer id){
         return boxService.delete(id);
     }
+
 }
